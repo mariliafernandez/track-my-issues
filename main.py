@@ -51,7 +51,7 @@ def time_spent_today(user_id):
               if due.weekday() < date.today().weekday():
                 loop = False
                 break
-              if date.today() - due == timedelta(days=0) and 'Entregue' in item['labels']:
+              if date.today() - due == timedelta(days=0):
                 sec_spent += item['time_stats']['total_time_spent']
                 count_issues += 1
     
@@ -87,7 +87,7 @@ def time_spent_this_week(user_id):
     for item in res:
       for assignee in item['assignees']:
           if assignee['id'] == user_id:
-            if item['due_date'] and 'Entregue' in item['labels']:
+            if item['due_date']:
               due = date.fromisoformat(item['due_date'])
               if date.today() - due <= timedelta(days=days_behind):
                 sec_spent += item['time_stats']['total_time_spent']
@@ -125,8 +125,8 @@ if __name__ == "__main__":
   user_id = get_user_id(username)
 
   if today:
-    print(time_spent_today(user_id))
+    print('today: ', time_spent_today(user_id))
 
-  elif week:
-    print(time_spent_this_week(user_id))
+  if week:
+    print('this week: ', time_spent_this_week(user_id))
 
