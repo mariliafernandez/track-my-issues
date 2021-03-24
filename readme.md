@@ -1,4 +1,4 @@
-# Track my issues
+# Track my issues 
 Track time spent on your issues:
 
 Check hours spent on issues due **today** or **this week**  
@@ -15,7 +15,7 @@ Check hours spent on issues due **today** or **this week**
 
 ## Token
 You need a personal access token:
-* Create your personal access token (https://gitlab.scicrop.com/profile/personal_access_tokens)
+* Create your personal access token on gitlab (https://gitlab.scicrop.com/profile/personal_access_tokens)
 * Create a .env file inside this project and add the following:
 ```
 AUTH_TOKEN = <YOUR_PERSONAL_TOKEN>

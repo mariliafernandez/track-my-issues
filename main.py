@@ -11,18 +11,28 @@ token = f'Bearer {token}'
 
 
 def get_user_id(username):
-  url = f'https://gitlab.scicrop.com/api/v4/users'
-  headers = {
-      "Authorization": token,
-  }
-  r = requests.get(url, headers=headers)
+  loop = True
+  page = 1
 
-  res = json.loads(r.text)
+  while loop:
+    url = f'https://gitlab.scicrop.com/api/v4/users?page={str(page)}'
+    headers = {
+        "Authorization": token,
+    }
+    r = requests.get(url, headers=headers)
 
-  for item in res:
-    if item['username'] == username:
-      return item['id']
+    res = json.loads(r.text)
+    total_pages = int(r.headers['X-Total-Pages'])
+
+    for item in res:
+      if item['username'] == username:
+        return item['id']
     
+    if page < total_pages:
+      page+=1
+    else:
+      break
+      
   raise Exception('Username not found')
 
 
