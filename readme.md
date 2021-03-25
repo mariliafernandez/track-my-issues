@@ -1,4 +1,4 @@
-# Track my issues 
+# Track my issues on GitLab
 Track time spent on your issues:
 
 Check hours spent on issues due **today** or **this week**  
