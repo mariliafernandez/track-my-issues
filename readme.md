@@ -16,6 +16,9 @@ AUTH_TOKEN = <YOUR_PERSONAL_TOKEN>
 
 
 ## Usage
+Now you're good to go! 
+
+Just run the following command inside this project to track your time spent:
 ```
   python main.py <username> [--today] [--week]
 ```
